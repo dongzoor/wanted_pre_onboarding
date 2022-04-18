@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Project</title>
+</head>
+<body>
+    {% if project_list %}
+        <div class="container">
+            {% for project in project_list %}
+
+            <a href="{% url 'projectapp:detail' pk=project.pk %}"></a>
+
+            {% endfor %}
+        </div>
+    {% else %}
+
+    <div class="text-center">
+        <h1>No Projects YET!</h1>
+    </div>
+
+    {% endif %}
+
+    <div style="text-align: center">
+        <a href="{% url 'projectapp:create' %}" class="btn btn-dark rounded-pill mt-3 mb-3 px-2">
+            Create Project
+        </a>
+    </div>
+</body>
+</html>
