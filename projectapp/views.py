@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
 
 from projectapp.forms import ProjectCreationForm
 from projectapp.models import Project
@@ -39,5 +39,22 @@ class ProjectListView(ListView):
     model = Project
     context_object_name = 'project_list'
     template_name = 'projectapp/list.html'
+
+
+class ProjectDeleteView(DeleteView):
+    model = Project
+    form_class = ProjectCreationForm
+    context_object_name = 'target_project'
+    template_name = 'projectapp/delete.html'
+
+
+class ProjectUpdateView(UpdateView):
+    model = Project
+    form_class = ProjectCreationForm
+    context_object_name = 'target_project'
+    template_name = 'projectapp/update.html'
+
+    def get_success_url(self):
+        return reverse('projecteapp:detail', kwargs={'pk': self.object.pk})
 
 

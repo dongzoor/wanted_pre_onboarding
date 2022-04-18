@@ -11,6 +11,7 @@
         </div>
         <form action="{% url 'projectapp:create' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+            {{ form.as_table }}
             <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     </div>
