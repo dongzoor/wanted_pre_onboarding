@@ -7,7 +7,7 @@ from django.db import models
 class Project(models.Model):
 
     title = models.CharField(max_length=40)
-    writer = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='project', null=True)
+    writer = models.CharField(max_length=10, null=True)
     description = models.CharField(max_length=300, null=True)
     goalamount = models.IntegerField()
     enddate = models.DateTimeField(auto_now_add=False)

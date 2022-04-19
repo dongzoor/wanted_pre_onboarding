@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, DeleteView, UpdateView
+from django.views.generic.list import MultipleObjectMixin
 
 from projectapp.forms import ProjectCreationForm
 from projectapp.models import Project
@@ -23,7 +24,7 @@ class ProjectCreateView(CreateView):
         return reverse('projectapp:detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectDetailView(DetailView):
+class ProjectDetailView(DetailView, MultipleObjectMixin):
     model = Project
     context_object_name = 'target_project'
     template_name = 'projectapp/detail.html'
