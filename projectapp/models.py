@@ -7,12 +7,12 @@ from django.db import models
 class Project(models.Model):
 
     title = models.CharField(max_length=40)
-    writer = models.CharField(max_length=10, null=True)
-    description = models.CharField(max_length=300, null=True)
+    writer = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='project', null=True)
+    description = models.TextField(null=True)
     goalamount = models.IntegerField()
     enddate = models.DateTimeField(auto_now_add=False)
     funding = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
-
-
+    def __str__(self):
+        return f'{self.pk} : {self.title}'

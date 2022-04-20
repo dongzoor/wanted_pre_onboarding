@@ -6,8 +6,6 @@ from projectapp.models import Project
 
 class ProjectCreationForm(ModelForm):
 
-    description = forms.Textarea()
-
     class Meta:
         model = Project
-        fields = ['title', 'writer', 'description', 'goalamount', 'enddate', 'funding']
+        fields = ['title', 'description', 'goalamount', 'enddate', 'funding']
